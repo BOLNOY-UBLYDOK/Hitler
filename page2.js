@@ -3,22 +3,64 @@ const music = document.getElementById("song");
 const button = document.getElementById("playButton");
 
 
-button.addEventListener("click", function(){
 
-    if(music.paused){
+button.addEventListener("click",()=>{
 
-        music.play();
 
-        button.innerHTML = "🎶 Музыка играет";
+if(music.paused){
 
-    }
+music.play();
 
-    else{
+button.innerHTML="🎶 Музыка играет";
 
-        music.pause();
+}
 
-        button.innerHTML = "🎵 Включить музыку";
+else{
 
-    }
+music.pause();
+
+button.innerHTML="🎵 Включить музыку";
+
+}
+
+
+});
+
+
+
+
+
+const photos = document.querySelectorAll(".polaroid");
+
+
+
+const observer = new IntersectionObserver((entries)=>{
+
+
+entries.forEach(entry=>{
+
+
+if(entry.isIntersecting){
+
+entry.target.classList.add("show");
+
+}
+
+
+});
+
+
+},{
+
+threshold:0.2
+
+});
+
+
+
+
+photos.forEach(photo=>{
+
+observer.observe(photo);
 
 });
