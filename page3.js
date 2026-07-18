@@ -1,134 +1,55 @@
-function openLetter(){
+function openLetter() {
 
+    const envelope = document.getElementById("envelope");
+    const letter = document.getElementById("letter");
+    const song = document.getElementById("letterSong");
 
-const envelope =
-document.getElementById("envelope");
+    // Запускаем музыку сразу после нажатия (важно для iPhone)
+    song.play().catch(error => {
+        console.log("Ошибка воспроизведения:", error);
+    });
 
+    envelope.classList.add("open");
 
-const letter =
-document.getElementById("letter");
+    setTimeout(() => {
+        envelope.classList.add("hide");
+    }, 1000);
 
-
-const song =
-document.getElementById("letterSong");
-
-
-
-envelope.classList.add("open");
-
-
-
-setTimeout(()=>{
-
-
-envelope.classList.add("hide");
-
-
-},1000);
-
-
-
-
-setTimeout(()=>{
-
-
-letter.classList.add("show");
-
-
-},1300);
-
-
-
-song.play();
-
-
+    setTimeout(() => {
+        letter.classList.add("show");
+    }, 1300);
 
 }
 
 
+// Падающие Minecraft-сердечки и сакура
 
+const particles = document.querySelector(".particles");
 
+function createParticle() {
 
-// падающие Minecraft сердечки и сакура 🌸💗
+    const img = document.createElement("img");
 
+    if (Math.random() < 0.7) {
+        img.src = "heart.png";
+    } else {
+        img.src = "cherry_flower.png";
+    }
 
-const particles =
-document.querySelector(".particles");
+    img.className = "particle";
 
+    img.style.left = Math.random() * 100 + "%";
 
+    img.style.width = (15 + Math.random() * 20) + "px";
+    img.style.height = img.style.width;
 
+    img.style.animationDuration = (10 + Math.random() * 8) + "s";
 
-function createParticle(){
+    particles.appendChild(img);
 
-
-
-const img =
-document.createElement("img");
-
-
-
-if(Math.random()<0.7){
-
-
-img.src="heart.png";
-
-
+    setTimeout(() => {
+        img.remove();
+    }, 18000);
 }
 
-else{
-
-
-img.src="cherry_flower.png";
-
-
-}
-
-
-
-img.className="particle";
-
-
-
-img.style.left =
-
-Math.random()*100+"%";
-
-
-
-img.style.width =
-
-(15+Math.random()*20)+"px";
-
-
-
-img.style.height =
-
-img.style.width;
-
-
-
-img.style.animationDuration =
-
-(10+Math.random()*8)+"s";
-
-
-
-particles.appendChild(img);
-
-
-
-setTimeout(()=>{
-
-
-img.remove();
-
-
-},18000);
-
-
-
-}
-
-
-
-setInterval(createParticle,900);
+setInterval(createParticle, 900);
