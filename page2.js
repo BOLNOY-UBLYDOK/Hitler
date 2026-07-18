@@ -11,7 +11,7 @@ if(music.paused){
 
 music.play();
 
-button.innerHTML="🎶 Музыка играет";
+button.innerHTML="🎶 music is playing";
 
 }
 
@@ -19,7 +19,7 @@ else{
 
 music.pause();
 
-button.innerHTML="🎵 Включить музыку";
+button.innerHTML="🎵 Play song";
 
 }
 
