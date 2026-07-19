@@ -1,22 +1,16 @@
 *{
-
 margin:0;
 padding:0;
 box-sizing:border-box;
-
 }
-
 
 body{
 
-min-height:100vh;
-
-background:
-linear-gradient(
+background:linear-gradient(
 180deg,
-#050505,
-#1b1118,
-#f8c7dc
+#080808 0%,
+#1b1117 35%,
+#f8d7e6 100%
 );
 
 font-family:Arial,sans-serif;
@@ -25,54 +19,204 @@ color:white;
 
 overflow-x:hidden;
 
-}
-
-
-
-
-.container{
-
-display:flex;
-
-flex-direction:column;
-
-align-items:center;
-
-padding:40px 20px;
-
-}
-
-
-
-
-
-/* винил */
-
-.vinyl-box{
+min-height:100vh;
 
 position:relative;
 
-display:flex;
+}
 
-justify-content:center;
+/* Контейнер */
+
+.container{
+
+width:100%;
+
+max-width:430px;
+
+margin:auto;
+
+padding:30px 20px 80px;
+
+position:relative;
+
+z-index:2;
+
+}
+
+/* Заголовок */
+
+.title{
+
+font-size:34px;
+
+text-align:center;
+
+color:#ffeaf4;
+
+margin-top:15px;
+
+text-shadow:0 0 12px #ffbfd7;
+
+}
+
+.subtitle{
+
+text-align:center;
+
+margin-top:10px;
+
+margin-bottom:45px;
+
+font-size:15px;
+
+color:#ffdce9;
+
+letter-spacing:2px;
+
+}
+
+/* Веточки */
+
+.branch{
+
+position:fixed;
+
+top:35px;
+
+width:110px;
+
+z-index:0;
+
+opacity:.95;
+
+pointer-events:none;
+
+}
+
+.branch.left{
+
+left:-12px;
+
+}
+
+.branch.right{
+
+right:-12px;
+
+transform:scaleX(-1);
+
+}
+
+/* Проигрыватель */
+
+.player{
+
+display:flex;
 
 align-items:center;
 
-}
+justify-content:center;
 
+margin-bottom:40px;
 
+position:relative;
 
-.vinyl{
-
-width:230px;
-
-animation:spin 7s linear infinite;
-
-filter:drop-shadow(0 0 20px #f4a6c8);
+height:260px;
 
 }
 
+/* Обложка */
 
+.cover{
+
+width:220px;
+
+height:220px;
+
+border-radius:10px;
+
+overflow:hidden;
+
+box-shadow:
+0 0 35px rgba(255,210,228,.35);
+
+z-index:3;
+
+position:relative;
+
+}
+
+.cover img{
+
+width:100%;
+
+height:100%;
+
+object-fit:cover;
+
+}
+
+/* Винил */
+
+.vinyl-container{
+
+position:absolute;
+
+left:165px;
+
+width:220px;
+
+height:220px;
+
+display:flex;
+
+align-items:center;
+
+justify-content:center;
+
+}
+
+.glow{
+
+position:absolute;
+
+width:180px;
+
+height:180px;
+
+border-radius:50%;
+
+background:rgba(255,183,214,.28);
+
+filter:blur(35px);
+
+z-index:0;
+
+}
+
+#vinyl{
+
+width:185px;
+
+height:185px;
+
+border-radius:50%;
+
+position:relative;
+
+z-index:1;
+
+animation:none;
+
+}
+
+/* Когда играет музыка */
+
+#vinyl.playing{
+
+animation:spin 4s linear infinite;
+
+}
 
 @keyframes spin{
 
@@ -90,96 +234,170 @@ transform:rotate(360deg);
 
 }
 
+/* Игла */
 
-
-
-.vinyl-text{
+#needle{
 
 position:absolute;
 
-font-size:8px;
+top:-8px;
 
-text-align:center;
+right:8px;
+
+width:120px;
+
+height:120px;
+
+transform-origin:top right;
+
+transform:rotate(-28deg);
+
+transition:transform .8s ease;
+
+z-index:4;
+
+}
+
+#needle.active{
+
+transform:rotate(2deg);
+
+}
+
+.needle-arm{
+
+position:absolute;
+
+right:8px;
+
+top:0;
+
+width:95px;
+
+height:6px;
+
+background:#d8d8d8;
+
+border-radius:6px;
+
+transform:rotate(36deg);
+
+transform-origin:right center;
+
+box-shadow:0 0 8px rgba(255,255,255,.4);
+
+}
+
+.needle-head{
+
+position:absolute;
+
+right:0;
+
+top:-4px;
+
+width:16px;
+
+height:16px;
+
+border-radius:50%;
+
+background:#f3b6cf;
+
+box-shadow:0 0 10px #ffd4e5;
+
+}
+
+/* Кнопки */
+
+.controls{
+
+display:flex;
+
+justify-content:center;
+
+align-items:center;
+
+gap:22px;
+
+margin-top:10px;
+
+margin-bottom:20px;
+
+}
+
+.controls button{
+
+background:rgba(255,255,255,.08);
+
+border:2px solid #ffd7e6;
 
 color:white;
 
-opacity:0.8;
+font-size:28px;
 
-}
+width:62px;
 
+height:62px;
 
-
-
-/* кнопка музыки */
-
-
-button{
-
-margin-top:35px;
-
-background:#f4a6c8;
-
-border:none;
-
-padding:16px 35px;
-
-border-radius:40px;
-
-font-size:18px;
-
-color:#351523;
+border-radius:50%;
 
 cursor:pointer;
 
-box-shadow:
+transition:.3s;
 
-0 0 20px #f4a6c8;
-
-transition:0.3s;
+backdrop-filter:blur(6px);
 
 }
 
+.controls button:hover{
 
-button:hover{
+transform:scale(1.08);
 
-transform:scale(1.05);
+box-shadow:0 0 20px #ffcde1;
 
 }
 
+.playing{
 
+text-align:center;
 
+font-size:14px;
 
+letter-spacing:3px;
 
-/* листай */
+color:#ffe6f1;
 
+margin-bottom:35px;
+
+}
+
+/* Листай */
 
 .scroll{
 
-margin-top:50px;
+text-align:center;
 
-font-size:25px;
+font-size:18px;
 
-animation:float 2s infinite;
+color:#ffe8f3;
+
+animation:floatArrow 2s infinite;
+
+margin-bottom:50px;
 
 }
 
-
-
-@keyframes float{
+@keyframes floatArrow{
 
 50%{
 
-transform:translateY(10px);
+transform:translateY(8px);
 
 }
 
 }
-
-
-
-
-
-/* фотографии */
+/* Галерея фотографий */
 
 .gallery{
 
@@ -191,72 +409,69 @@ flex-direction:column;
 
 align-items:center;
 
-gap:35px;
-
-margin-top:60px;
+gap:45px;
 
 }
 
 
 
+/* Полароид */
 
-
-.polaroid{
+.photo-card{
 
 background:white;
 
-width:90%;
+width:330px;
 
-max-width:380px;
-
-padding:12px;
+padding:15px;
 
 padding-bottom:25px;
 
+border-radius:5px;
+
+
 box-shadow:
 
-0 10px 25px rgba(0,0,0,0.4);
+0 10px 25px rgba(0,0,0,.35);
+
+
+color:#54283d;
+
+
+transform:translateY(60px);
 
 
 opacity:0;
 
-transform:
-
-translateY(60px)
-
-rotate(-3deg);
-
 
 transition:
 
-opacity 1s ease,
+1s ease;
 
-transform 1s ease;
 
 }
 
 
 
-
-
-.polaroid.show{
+.photo-card.show{
 
 opacity:1;
 
-transform:
-
-translateY(0)
-
-rotate(-3deg);
+transform:translateY(0);
 
 }
 
 
 
 
-.polaroid img{
+
+.photo-card img{
 
 width:100%;
+
+height:330px;
+
+object-fit:cover;
 
 display:block;
 
@@ -264,36 +479,149 @@ display:block;
 
 
 
-.polaroid p{
 
-color:#4a2735;
-
-font-size:13px;
+.photo-card p{
 
 text-align:center;
-
-margin-top:15px;
 
 font-family:cursive;
 
+font-size:16px;
+
+margin-top:18px;
+
 }
 
 
 
 
 
-/* маленькие надписи */
+/* Небольшой наклон полароидов */
 
 
-.little-text{
+.photo-card:nth-child(odd){
 
-font-size:14px;
+transform:rotate(-3deg) translateY(60px);
 
-color:#ffe5f0;
+}
+
+
+.photo-card:nth-child(even){
+
+transform:rotate(3deg) translateY(60px);
+
+}
+
+
+
+.photo-card:nth-child(odd).show{
+
+transform:rotate(-3deg) translateY(0);
+
+}
+
+
+.photo-card:nth-child(even).show{
+
+transform:rotate(3deg) translateY(0);
+
+}
+
+
+
+
+
+/* Нижний блок */
+
+
+.next-section{
+
+margin-top:80px;
+
+margin-bottom:50px;
 
 text-align:center;
 
-letter-spacing:1px;
+
+padding:30px;
+
+
+border-radius:25px;
+
+
+background:
+
+rgba(255,255,255,.08);
+
+
+border:
+
+1px solid rgba(255,220,235,.5);
+
+
+box-shadow:
+
+0 0 25px rgba(255,190,215,.4);
+
+
+}
+
+
+
+.next-section p{
+
+font-size:17px;
+
+color:#ffe7f1;
+
+margin-bottom:25px;
+
+}
+
+
+
+
+.next-page{
+
+
+background:#ffc9df;
+
+
+color:#4a2335;
+
+
+border:none;
+
+
+padding:15px 35px;
+
+
+font-size:20px;
+
+
+border-radius:50px;
+
+
+cursor:pointer;
+
+
+box-shadow:
+
+0 0 20px #ffc9df;
+
+
+transition:.3s;
+
+
+}
+
+
+
+.next-page:hover{
+
+
+transform:scale(1.08);
+
 
 }
 
@@ -301,75 +629,62 @@ letter-spacing:1px;
 
 
 
-/* Minecraft низ */
-
-.minecraft{
-
-margin-top:70px;
-
-display:flex;
-
-gap:20px;
-
-align-items:center;
-
-}
+/* Падающие частицы */
 
 
+.particles{
 
-.minecraft img{
-
-width:65px;
-
-image-rendering:pixelated;
-
-}
-
-
-
-
-
-/* падающие сердечки PNG */
-
-
-.hearts{
 
 position:fixed;
 
+
 top:0;
+
 
 left:0;
 
+
 width:100%;
+
 
 height:100%;
 
-pointer-events:none;
 
 overflow:hidden;
 
-z-index:5;
+
+pointer-events:none;
+
+
+z-index:1;
+
 
 }
 
 
 
 
-.heart{
+
+.particle{
+
 
 position:absolute;
 
-top:-40px;
 
-width:25px;
+top:-50px;
 
-height:25px;
 
 image-rendering:pixelated;
 
+
+opacity:.85;
+
+
 animation:fall linear forwards;
 
+
 }
+
 
 
 
@@ -379,19 +694,19 @@ animation:fall linear forwards;
 
 0%{
 
+
 transform:
 
-translateY(-40px)
+translateY(-50px)
 
 rotate(0deg);
 
-opacity:1;
 
 }
 
 
-
 100%{
+
 
 transform:
 
@@ -399,70 +714,55 @@ translateY(110vh)
 
 rotate(360deg);
 
-opacity:0;
 
 }
 
 
+
 }
 
 
 
 
 
-/* падающие цветочки сакуры */
+/* лёгкое свечение вокруг страницы */
 
 
-.flower{
+.container::before{
+
+
+content:"";
+
 
 position:absolute;
 
-top:-40px;
 
-width:25px;
-
-height:25px;
-
-image-rendering:pixelated;
-
-animation:flowerFall linear forwards;
-
-opacity:0.85;
-
-filter:
-
-drop-shadow(0 0 5px #f8c7dc);
-
-}
+width:250px;
 
 
+height:250px;
 
 
-@keyframes flowerFall{
+background:#ffc9df;
 
 
-0%{
-
-transform:
-
-translateY(-40px)
-
-rotate(0deg);
-
-}
+filter:blur(100px);
 
 
-100%{
+opacity:.18;
 
-transform:
 
-translateY(110vh)
+top:100px;
 
-rotate(360deg);
 
-opacity:0;
+left:50%;
 
-}
+
+transform:translateX(-50%);
+
+
+z-index:-1;
+
 
 }
 
@@ -470,80 +770,70 @@ opacity:0;
 
 
 
-/* кнопка перехода */
+/* адаптация телефона */
 
 
-.next-box{
-
-margin-top:80px;
-
-margin-bottom:50px;
-
-text-align:center;
-
-padding:30px;
-
-border:
-
-2px solid #f4a6c8;
-
-border-radius:30px;
-
-background:
-
-rgba(255,255,255,0.08);
+@media(max-width:400px){
 
 
-box-shadow:
 
-0 0 25px #f4a6c8;
+.title{
+
+font-size:29px;
 
 }
 
 
 
+.player{
 
-.next-box p{
-
-font-size:16px;
-
-margin-bottom:15px;
-
-color:#ffe5f0;
+height:230px;
 
 }
 
 
 
+.cover{
 
+width:190px;
 
-.next-button{
-
-margin-top:15px;
-
-background:#f8c7dc;
-
-color:#351523;
-
-font-size:20px;
-
-padding:15px 45px;
-
-border-radius:50px;
-
-border:2px solid white;
-
-box-shadow:
-
-0 0 15px #f8c7dc;
+height:190px;
 
 }
 
 
 
+.vinyl-container{
 
-.next-button:hover{
+left:135px;
 
-transform:scale(1.1);
+}
+
+
+
+#vinyl{
+
+width:165px;
+
+height:165px;
+
+}
+
+
+
+.photo-card{
+
+width:290px;
+
+}
+
+
+
+.photo-card img{
+
+height:290px;
+
+}
+
 
 }
