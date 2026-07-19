@@ -4,160 +4,205 @@
 <head>
 
 <meta charset="UTF-8">
+
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-<title>Our memories </title>
+<title>Our Song 💗</title>
 
 <link rel="stylesheet" href="page2.css">
 
 </head>
 
-
 <body>
 
+<!-- Падающие сердечки и сакура -->
 
-<div class="hearts"></div>
+<div class="particles"></div>
 
+<!-- Веточки -->
+
+<img src="cherry_branch.png" class="branch left">
+
+<img src="cherry_branch.png" class="branch right">
 
 <div class="container">
 
+<h1 class="title">
 
-<div class="vinyl-box">
+♡ Our song ♡
 
-<img src="vinyl.png" class="vinyl">
+</h1>
 
-<div class="vinyl-text">
-Lana Del Rey
-<br>
-Ultraviolence
+<p class="subtitle">
+
+Lana Del Rey — Ultraviolence
+
+</p>
+
+<!-- Проигрыватель -->
+
+<div class="player">
+
+<!-- Обложка -->
+
+<div class="cover">
+
+<img src="cover.png" alt="Album Cover">
+
+</div>
+
+<!-- Винил -->
+
+<div class="vinyl-container">
+
+<div class="glow"></div>
+
+<img src="vinyl.PNG" id="vinyl">
+
+<!-- Игла -->
+
+<div id="needle">
+
+<div class="needle-head"></div>
+
+<div class="needle-arm"></div>
+
 </div>
 
 </div>
 
+</div>
 
+<!-- Кнопки -->
 
-<button id="playButton">
-🎵 Play song
+<div class="controls">
+
+<button id="prevBtn">
+
+⏮
+
 </button>
 
+<button id="playBtn">
 
+▶️
 
-<audio id="song">
+</button>
+
+<button id="nextBtn">
+
+⏭
+
+</button>
+
+</div>
+
+<p class="playing">
+
+♪ Now Playing
+
+</p>
+
+<!-- Музыка -->
+
+<audio id="music">
 
 <source src="music.mp3" type="audio/mpeg">
 
 </audio>
 
+<!-- Листай -->
 
+<div class="scroll">
 
-<p class="scroll">
-↓ листай ↓
-</p>
+↓
 
+<br>
 
+Листай дальше
 
+</div>
+
+<!-- Фотографии -->
 
 <div class="gallery">
 
+<div class="photo-card hidden">
 
-<div class="polaroid">
 <img src="photo1.jpg">
-<p> наша гениальная идея (нет)</p>
+
+<p>
+
+♡ самая лучшая фотография начинается именно отсюда ♡
+
+</p>
+
 </div>
 
+<div class="photo-card hidden">
 
-<div class="little-text">
- две легенды лол
-</div>
-
-
-
-<div class="polaroid">
 <img src="photo2.jpg">
-<p> ну только мы так могли </p>
+
+<p>
+
+помнишь этот день? 🌸
+
+</p>
+
 </div>
+<div class="photo-card hidden">
 
-
-
-<div class="little-text">
-"принеси мне стак камня срочно"
-</div>
-
-
-
-
-<div class="polaroid">
 <img src="photo3.jpg">
-<p> ой больные </p>
+
+<p>
+
+хочу чтобы таких моментов было ещё очень много 🤍
+
+</p>
+
 </div>
 
 
 
-<div class="little-text">
-неадекваты
-</div>
+<div class="photo-card hidden">
 
-
-
-<div class="polaroid">
 <img src="photo4.jpg">
-<p>позор</p>
-</div>
-
-
-</div>
-
-
-
-
-
-<div class="minecraft">
-
-<img src="cherry_blossom.png">
-
-<img src="grass_block.png">
-
-<img src="minecraft_cat.png">
-
-<img src="grass_block.png">
-
-<img src="cherry_blossom.png">
-
-</div>
-
-
-
-
-
-<div class="next-box">
 
 <p>
-это ещё не конец 
+
+люблю тебя, глупышка 🌸
+
 </p>
+
+</div>
+
+</div>
+
+<!-- Кнопка перехода -->
+
+<div class="next-section">
 
 <p>
-готова к следующему сюрпризу?
-</p>
 
+ты почти досмотрела мой подарок... 💗
+
+</p>
 
 <a href="page3.html">
 
-<button class="next-button">
-Дальше → 
+<button class="next-page">
+
+💌 Дальше
+
 </button>
 
 </a>
 
-
 </div>
 
-
-
 </div>
-
 
 <script src="page2.js"></script>
-
 
 </body>
 
